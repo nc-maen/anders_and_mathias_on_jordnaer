@@ -5,10 +5,12 @@
   "description": "Read-only CLI for checking Restaurant Jordnær availability on Superb.",
   "type": "module",
   "bin": {
-    "jordnaer-availability": "./bin/jordnaer-availability.js"
+    "jordnaer-availability": "./bin/jordnaer-availability.js",
+    "jordnaer-monitor": "./bin/jordnaer-monitor.js"
   },
   "scripts": {
-    "check": "node --check bin/jordnaer-availability.js && node --check src/cli.js && node --check src/superb-client.js",
+    "check": "node --check bin/jordnaer-availability.js && node --check bin/jordnaer-monitor.js && node --check src/cli.js && node --check src/monitor.js && node --check src/superb-client.js && node --check src/twilio-client.js",
+    "monitor": "node bin/jordnaer-monitor.js --guests 2 --days fri,sat --limit 3",
     "test": "node --test"
   },
   "engines": {

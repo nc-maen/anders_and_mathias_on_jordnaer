@@ -1,0 +1,16 @@
+services:
+  - type: cron
+    name: jordnaer-availability-monitor
+    runtime: node
+    schedule: "*/30 * * * *"
+    buildCommand: npm install --ignore-scripts
+    startCommand: node bin/jordnaer-monitor.js --guests 2 --days fri,sat --limit 3
+    envVars:
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_FROM_NUMBER
+        sync: false
+      - key: TWILIO_TO_NUMBER
+        sync: false
